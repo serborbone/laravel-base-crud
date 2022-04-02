@@ -12,7 +12,9 @@
 
   <body>
 
-    
+      @yield('content')
+      @yield('singleComic')
+      @yield('createComic')
 
   </body>
 

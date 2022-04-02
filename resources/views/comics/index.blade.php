@@ -1,17 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('home')
 
-  <head>
+@section('content')
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Comics</title>
+  <div class="container">
+    <table class="table">
 
-  </head>
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Price</th>
+            <th scope="col">Series</th>
+            <th scope="col">Sale Date</th>
+            <th scope="col">Type</th>
+          </tr>
+        </thead>
 
-  <body>
-      
-  </body>
+        <tbody>
+          @foreach ($comics as $comic)
+            <tr>
+              <td>{{$comic->id}}</td>
+              <td>{{$comic->title}}</td>
+              <td>{{$comic->price}}</td>
+              <td>{{$comic->series}}</td>
+              <td>{{$comic->sale_date}}</td>
+              <td>{{$comic->type}}</td>
+              <td> <a href="{{ route('comics.show', $comic->id) }}" type="button" class="btn btn-primary">Info</a> </td>
+            </tr>
+          @endforeach
+        </tbody>
 
-</html>
+    </table>
+
+  </div>
+
+@endsection
