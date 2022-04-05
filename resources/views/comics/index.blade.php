@@ -3,7 +3,13 @@
 @section('content')
 
   <div class="container">
-    <table class="table">
+
+    <div class="d-flex align-items-center">
+      <p class="fs-4 mt-3 me-3">CREATE A NEW ITEM</p>
+      <a href="{{ route('comics.create') }}" type="button" class="btn btn-primary">Create</a>
+    </div>
+
+    <table class="table mt-3">
 
         <thead>
           <tr>
@@ -25,7 +31,20 @@
               <td>{{$comic->series}}</td>
               <td>{{$comic->sale_date}}</td>
               <td>{{$comic->type}}</td>
-              <td> <a href="{{ route('comics.show', $comic->id) }}" type="button" class="btn btn-primary">Info</a> </td>
+
+              {{-- INFO SINGLE COMIC --}}
+              <td> <a href="{{ route('comics.show', $comic->id) }}" type="button" class="btn btn-info">Info</a> </td>
+              {{-- UPDATE SINGLE COMIC --}}
+              <td> <a href="{{ route('comics.edit', $comic->id) }}" type="button" class="btn btn-warning">Update</a> </td>
+
+              {{-- DELETE Btn da implementare con form metodo POST --}}
+              <form method="POST" action="{{ route( 'comics.destroy', ['comic' => $comic->id] ) }}">
+
+                @csrf
+                @method('DELETE')
+                <td> <button type="submit" class="btn btn-danger">Delete</button> </td>
+
+              </form>
             </tr>
           @endforeach
         </tbody>

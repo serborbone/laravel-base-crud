@@ -12,9 +12,17 @@
 
   <body>
 
+      {{-- FLASH DATA per alert corretto inserimento comics --}}
+      @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status')}}
+        </div>
+      @endif
+
       @yield('content')
       @yield('singleComic')
       @yield('createComic')
+      @yield('editComic')
 
   </body>
 
